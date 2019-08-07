@@ -1,0 +1,126 @@
+html,body{
+ margin: 0;
+ padding: 0;
+ width: 100%;
+ height: 100%;
+}
+body{
+  background: url("imag/desk.png");
+}
+
+/*游戏桌面的设置，让游戏桌面能够不布满整个body*/
+#desk {
+  margin: 0 auto;
+  /*background-color: yellow;*/
+  width: 78%;
+  height: 85%;
+  position: relative;
+}
+
+/*卡片块设置，该块是用来存放纸牌正反面的块，宽度和间距都应该设置*/
+.card {
+  width: 17%;
+  height: 39%;
+  /*background-color: lightgoldenrodyellow;*/
+  margin-left: 12%;
+  margin-bottom: 10px;
+  margin-top: 3%;
+  float: left;
+  border-radius: 18%;
+  position: relative;
+}
+
+/*正反面块设置，front指的是背面向上的纸牌，back指的是正面向上的纸牌*/			
+.front,
+.back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 8%;
+  -webkit-backface-visibility: hidden;/*该属性指的是当该元素面对屏幕时它的背面是不可见的，通常用来设置翻转动画*/
+  -webkit-transition: all .3s;
+ }
+			
+.front {
+  background: url("imag/deckfront.png") no-repeat;
+  background-size: 100% 100%;
+  z-index: 10;
+}
+			
+.back {
+  z-index: 18;
+  -webkit-transform: rotateY(-180deg);
+}
+
+/*设置照片正面的翻转效果和反面的翻转效果，其中如果点击已经翻转过来的反面时，旋转度数为0，如果点击未翻转的正面时，旋转度数为180度*/		
+ .cardFlipped .back {
+  z-index: 10;
+  -webkit-transform: rotateY(0deg);
+}
+			
+ .cardFlipped .front {
+  z-index: 8;
+  -webkit-transform: rotateY(180deg);
+ }
+	
+/*设置几张照片的块属性和背景*/		
+ .deck_rj {
+  background: url("imag/deck_rj.png") no-repeat;
+  background-size: 100% 100%;
+ }
+			
+ .deck_rq {
+  background: url("imag/deck_rq.png") no-repeat;
+  background-size: 100% 100%;
+ }
+			
+ .deck_rk {
+  background: url("imag/deck_rk.png") no-repeat;
+  background-size: 100% 100%;
+ }
+
+/*设置卡片移除属性，用透明度为0来控制*/		
+ .cardRemove {
+  opacity: 0;
+ }
+
+/*再玩一次按钮块属性*/		
+ .buttonArea {
+  margin: 0 auto;
+  text-align: center;
+ }
+			
+ button#oncemore {
+  height: 34px;
+  width: 250px;
+  border: 1px solid #858fa6;
+  background: #4a5775;
+  background: -webkit-gradient(linear, left top, left bottom, from(#606c88), to(#3f4c6b));
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 0px 5px #000;
+  font-family: impact;
+  color: #fff;
+  text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.75);
+  font-size: 25px;
+  margin: 10px auto;
+  display: none;
+ }
+ 
+ /*结果块的显示设置，本身是透明度为0的隐藏状态，只有游戏成功结束了以后才有结果块*/
+ #result{
+  font-family: impact;
+  color: #fff;
+  font-size: 35px;
+  position: absolute;
+  bottom: 40%;
+  text-align: center;
+  margin: 0 auto;
+  left:27%;
+  transition: all 0.5s;
+  opacity: 0;
+ }
+ 
+ /*用该块来控制结果块的显示，游戏结束成功以后设置透明度为1，从而显示结果*/
+ #desk .showResult{
+   opacity: 1;
+ }
